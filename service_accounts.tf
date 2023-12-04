@@ -7,6 +7,7 @@ variable "iam_roles" {
   type = map(string)
   default = {
     gcr_writer      = "roles/artifactregistry.writer",
+    artifact_writer = "roles/artifactregistry.repoAdmin",
     storage_admin   = "roles/storage.admin",
     wif_user        = "roles/iam.workloadIdentityUser",
     cloud_sql_admin = "roles/cloudsql.admin",
