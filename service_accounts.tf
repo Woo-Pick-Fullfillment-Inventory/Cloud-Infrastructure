@@ -20,3 +20,10 @@ resource "google_project_iam_member" "iam_members" {
   role    = each.value
   member  = "serviceAccount:${google_service_account.github_service_account.email}"
 }
+
+resource "google_service_account_iam_binding" "github_sa_iam_binding_wif" {
+  service_account_id = google_service_account.github_service_account.name
+  role               = "roles/iam.workloadIdentityUser"
+  members = [
+    "principalSet://iam.googleapis.com/projects/507085571061/locations/global/workloadIdentityPools/terraform-pool-todo/attribute.repository/Woo-Pick-Fullfillment-Inventory/Backend-Woo-Inventory",]
+}
