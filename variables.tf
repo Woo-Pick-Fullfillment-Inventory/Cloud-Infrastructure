@@ -9,3 +9,7 @@ variable "region" {
 variable "zone" {
   type = string
 }
+
+variable "GOOGLE_CREDENTIALS" {
+  type = string  
+}
