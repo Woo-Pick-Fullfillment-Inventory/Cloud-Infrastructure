@@ -5,7 +5,7 @@ resource "google_compute_network" "sql_vpc_network" {
   mtu                     = 1460
 }
 
-resource "google_compute_subnetwork" "todo_subnet" {
+resource "google_compute_subnetwork" "sql_subnet" {
   name          = "sql-subnet"
   region        = var.region
   network       = google_compute_network.sql_vpc_network.name
