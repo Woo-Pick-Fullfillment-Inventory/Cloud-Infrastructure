@@ -11,6 +11,7 @@ variable "iam_roles" {
     storage_admin   = "roles/storage.admin",
     wif_user        = "roles/iam.workloadIdentityUser",
     cloud_sql_admin = "roles/cloudsql.admin",
+    service_account_user = "roles/iam.serviceAccountUser",
   }
 }
 
