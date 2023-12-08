@@ -1,15 +1,15 @@
 // add auto-scailing later on
 resource "google_spanner_instance" "woo_pick_inventory_spanner" {
-  config       = "regional-europe-west3"
-  display_name = "woo_pick_inventory_spanner"
-  processing_units    = 100
+  config           = "regional-europe-west3"
+  display_name     = "woo_pick_inventory_spanner"
+  processing_units = 100
 }
 
 resource "google_spanner_database" "database" {
   instance = google_spanner_instance.woo_pick_inventory_spanner.name
   name     = "my-database"
   ddl = [
-   <<-EOF
+    <<-EOF
     CREATE TABLE app_users (
       app_user_id STRING(255) NOT NULL,
       app_email STRING(255) NOT NULL,
@@ -19,16 +19,16 @@ resource "google_spanner_database" "database" {
       authenticated BOOL NOT NULL
     ) PRIMARY KEY (app_user_id)
   EOF
-  ,<<-EOF
-    CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_email);
+    , <<-EOF
+    CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_email)
   EOF
-  ,<<-EOF
+    , <<-EOF
     CREATE TABLE app_users_to_woo_users (
         app_user_id STRING(255) NOT NULL,
         woo_user_id STRING(255) NOT NULL
     ) PRIMARY KEY (app_user_id, woo_user_id)
   EOF
-  ,<<-EOF
+    , <<-EOF
     CREATE TABLE woo_users (
         woo_user_id STRING(255) NOT NULL,
         woo_token STRING(255) NOT NULL,
