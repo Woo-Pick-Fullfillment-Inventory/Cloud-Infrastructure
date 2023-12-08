@@ -7,7 +7,7 @@ resource "google_spanner_instance" "woo_pick_inventory_spanner" {
 
 resource "google_spanner_database" "database" {
   instance = google_spanner_instance.woo_pick_inventory_spanner.name
-  name     = "my-database"
+  name     = "woo_app_users"
   ddl = [
     <<-EOF
     CREATE TABLE app_users (
