@@ -36,9 +36,9 @@ resource "google_service_account" "backend_cloudrun_service_account" {
   display_name = "backend-woopick-cloudrun"
 }
 
-resource "google_service_account_iam_binding" "cloudrun_backend_sa_iam_binding" {
+/* resource "google_service_account_iam_binding" "cloudrun_backend_sa_iam_binding" {
   service_account_id = google_service_account.backend_cloudrun_service_account.name
   role               = "roles/spanner.admin"
   members = [
   ]
-}
+} */
