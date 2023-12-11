@@ -30,3 +30,15 @@ resource "google_service_account_iam_binding" "github_sa_iam_binding_wif" {
     "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.woopick_tfc_identity_pool.workload_identity_pool_id}/attribute.repository/Woo-Pick-Fullfillment-Inventory/Backend-Woo-Inventory"
   ]
 }
+
+resource "google_service_account" "backend_cloudrun_service_account" {
+  account_id   = "backend-woopick-cloudrun"
+  display_name = "backend-woopick-cloudrun"
+}
+
+resource "google_service_account_iam_binding" "cloudrun_backend_sa_iam_binding" {
+  service_account_id = google_service_account.backend_cloudrun_service_account.name
+  role               = "roles/spanner.admin"
+  members = [
+  ]
+}
