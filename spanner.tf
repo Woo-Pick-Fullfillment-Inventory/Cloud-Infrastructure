@@ -23,7 +23,7 @@ resource "google_spanner_database" "database" {
     CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_email)
   EOF
     , <<-EOF
-    CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_username)
+    CREATE UNIQUE INDEX UsernameUniqueIndex ON app_users (app_username)
   EOF
     , <<-EOF
     CREATE TABLE app_users_to_woo_users (
