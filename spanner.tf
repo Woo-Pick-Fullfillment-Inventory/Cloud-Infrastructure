@@ -21,6 +21,8 @@ resource "google_spanner_database" "database" {
   EOF
     , <<-EOF
     CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_email)
+  EOF
+    , <<-EOF
     CREATE UNIQUE INDEX EmailUniqueIndex ON app_users (app_username)
   EOF
     , <<-EOF
@@ -37,5 +39,5 @@ resource "google_spanner_database" "database" {
     ) PRIMARY KEY (woo_user_id)
   EOF
   ]
-  deletion_protection = false
+  deletion_protection = true
 }
