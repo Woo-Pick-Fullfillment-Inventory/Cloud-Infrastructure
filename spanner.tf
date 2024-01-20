@@ -25,7 +25,15 @@ resource "google_spanner_database" "database" {
     , <<-EOF
     CREATE UNIQUE INDEX UsernameUniqueIndex ON app_users (app_username)
   EOF
-    , <<-EOF
+    ,
+    <<-EOF
+    CREATE TABLE woo_users (
+        woo_user_id STRING(255) NOT NULL,
+        woo_token STRING(255) NOT NULL,
+        woo_secret STRING(255) NOT NULL
+    ) PRIMARY KEY (woo_user_id)
+  EOF
+   ,  <<-EOF
     CREATE TABLE app_users_to_woo_users (
         app_user_id STRING(255) NOT NULL,
         woo_user_id STRING(255) NOT NULL,
@@ -33,13 +41,10 @@ resource "google_spanner_database" "database" {
         CONSTRAINT fk_woo_user_id FOREIGN KEY (woo_user_id) REFERENCES woo_users (woo_user_id)
     ) PRIMARY KEY (app_user_id, woo_user_id)
   EOF
-    , <<-EOF
-    CREATE TABLE woo_users (
-        woo_user_id STRING(255) NOT NULL,
-        woo_token STRING(255) NOT NULL,
-        woo_secret STRING(255) NOT NULL
-    ) PRIMARY KEY (woo_user_id)
-  EOF
+    , 
+    <<-EOF
+      CREATE UNIQUE INDEX AppToWooUniqueIndexAppUserIdWooUserId ON app_users_to_woo_users (app_user_id, woo_user_id)
+    EOF
   ]
-  deletion_protection = false
+  deletion_protection = true
 }
