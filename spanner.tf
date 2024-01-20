@@ -29,6 +29,8 @@ resource "google_spanner_database" "database" {
     CREATE TABLE app_users_to_woo_users (
         app_user_id STRING(255) NOT NULL,
         woo_user_id STRING(255) NOT NULL
+        CONSTRAINT fk_app_user_id FOREIGN KEY (app_user_id) REFERENCES app_users (app_user_id),
+        CONSTRAINT fk_woo_user_id FOREIGN KEY (woo_user_id) REFERENCES woo_users (woo_user_id)
     ) PRIMARY KEY (app_user_id, woo_user_id)
   EOF
     , <<-EOF
