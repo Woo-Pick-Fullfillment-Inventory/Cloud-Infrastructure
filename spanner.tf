@@ -41,5 +41,5 @@ resource "google_spanner_database" "database" {
     ) PRIMARY KEY (woo_user_id)
   EOF
   ]
-  deletion_protection = true
+  deletion_protection = false
 }
