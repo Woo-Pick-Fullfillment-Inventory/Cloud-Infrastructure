@@ -11,7 +11,7 @@ resource "google_firestore_database" "woo_pick_firestore_database" {
 }
 
 resource "google_firestore_backup_schedule" "woo_pick_firestore_daily_backup" {
-  project  = "my-project-name"
+  project  = var.project_id
   database = google_firestore_database.woo_pick_firestore_database.name
 
   retention = "604800s" // 7 days (maximum possible value for daily backups)
