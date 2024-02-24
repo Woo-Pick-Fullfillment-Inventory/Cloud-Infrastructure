@@ -1,4 +1,4 @@
-// add auto-scailing later on
+/* // add auto-scailing later on
 resource "google_spanner_instance" "woo_pick_inventory_spanner" {
   config           = "regional-europe-west3"
   display_name     = "woo_pick_inventory_spanner"
@@ -47,4 +47,4 @@ resource "google_spanner_database" "database" {
     EOF
   ]
   deletion_protection = true
-}
+} */
