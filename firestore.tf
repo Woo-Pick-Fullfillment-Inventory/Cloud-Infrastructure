@@ -22,7 +22,7 @@ resource "google_firestore_backup_schedule" "woo_pick_firestore_daily_backup" {
 resource "google_firebaserules_ruleset" "primary" {
   source {
     files {
-      content     = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if true; } } }"
+      content     = "service cloud.firestore {match /databases/woo-pick-inventory-firestore/documents { match /{document=**} { allow read, write: if true; } } }"
       name        = "firestore.rules"
       fingerprint = ""
     }
