@@ -19,7 +19,7 @@ resource "google_firestore_backup_schedule" "woo_pick_firestore_daily_backup" {
   daily_recurrence {}
 }
 
-resource "google_firebaserules_ruleset" "primary" {
+resource "google_firebaserules_ruleset" "secondary" {
   source {
     files {
       content     = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if true; } } }"
