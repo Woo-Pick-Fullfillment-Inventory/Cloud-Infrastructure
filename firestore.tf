@@ -18,3 +18,17 @@ resource "google_firestore_backup_schedule" "woo_pick_firestore_daily_backup" {
 
   daily_recurrence {}
 }
+
+resource "google_firebaserules_ruleset" "primary" {
+  source {
+    files {
+      content     = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if true; } } }"
+      name        = "firestore.rules"
+      fingerprint = ""
+    }
+
+    language = ""
+  }
+
+  project = var.project_id
+}
