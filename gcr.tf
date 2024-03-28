@@ -7,10 +7,11 @@
 // todo: adjust the cleanup policies
 
 resource "google_artifact_registry_repository" "backend_artifact_registry_repository" {
-  provider      = google-beta
-  location      = var.region
-  repository_id = "backend-registry"
-  format        = "DOCKER"
+  project                = var.project_id
+  provider               = google-beta
+  location               = var.region
+  repository_id          = "backend-registry"
+  format                 = "DOCKER"
   cleanup_policy_dry_run = false
   cleanup_policies {
     id     = "delete-prerelease"
