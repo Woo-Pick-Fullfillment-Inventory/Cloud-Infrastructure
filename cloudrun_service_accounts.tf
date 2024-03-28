@@ -15,7 +15,7 @@ variable "iam_roles_backend_cloudrun_sa" {
 }
 
 resource "google_project_iam_member" "backend_cloudrun_iam_members" {
-  for_each = var.iam_roles_github_sa
+  for_each = var.iam_roles_backend_cloudrun_sa
 
   project = var.project_id
   role    = each.value
