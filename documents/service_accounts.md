@@ -1,0 +1,1 @@
+1. Removed `roles/datastore.serviceAgent` in `backend_cloudrun_service_account`.

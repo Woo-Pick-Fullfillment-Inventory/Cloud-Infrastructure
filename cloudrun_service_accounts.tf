@@ -8,7 +8,6 @@ variable "iam_roles_backend_cloudrun_sa" {
   default = {
     datastore_user            = "roles/datastore.user"
     cloud_run_admin           = "roles/run.admin"
-    firestore_service_agent   = "roles/datastore.serviceAgent"
     secret_manager_accessor   = "roles/secretmanager.secretAccessor"
     service_account_user      = "roles/iam.serviceAccountUser"
   }
