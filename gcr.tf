@@ -6,11 +6,10 @@
 // https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_versions
 // todo: adjust the cleanup policies
 
-/* resource "google_artifact_registry_repository" "my-repo" {
+resource "google_artifact_registry_repository" "backend_artifact_registry_repository" {
   provider      = google-beta
   location      = var.region
-  repository_id = "my-repository-${local.name_suffix}"
-  description   = "example docker repository with cleanup policies-${local.name_suffix}"
+  repository_id = "backend-registry"
   format        = "DOCKER"
   cleanup_policy_dry_run = false
   cleanup_policies {
@@ -39,4 +38,4 @@
       keep_count            = 5
     }
   }
-} */
+}
