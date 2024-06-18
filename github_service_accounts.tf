@@ -13,6 +13,7 @@ variable "iam_roles_github_sa" {
     cloud_sql_admin      = "roles/cloudsql.admin",
     service_account_user = "roles/iam.serviceAccountUser",
     firebase_owner       = "roles/firebase.admin",
+    compute_admin        = "roles/compute.admin",
   }
 }
 
