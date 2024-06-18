@@ -8,3 +8,7 @@ provider "google-beta" {
   region = "us-central1"
   zone   = "us-central1-a"
 }
+
+resource "google_project_service" "compute_api" {
+  service = "compute.googleapis.com"
+}
