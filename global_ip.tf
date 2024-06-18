@@ -11,21 +11,20 @@ output "load_balancer_ip_addr" {
   value = google_compute_global_address.lb_default.address
 }
 
-resource "google_compute_backend_service" "lb_default" {
-  provider              = google-beta
-  name                  = "myservice-backend"
-  load_balancing_scheme = "EXTERNAL_MANAGED"
-
-  backend {
-    group = google_compute_region_network_endpoint_group.lb_default[0].id
+resource "google_compute_region_network_endpoint_group" "cloudrun_neg_eu" {
+  name                  = "woopick-backend-cloudrun-neg-eu"
+  region                = "eu-west3"
+  network_endpoint_type = "SERVERLESS"
+  cloud_run {
+    service = "woopick-backend-eu"
   }
+}
 
-  backend {
-    group = google_compute_region_network_endpoint_group.lb_default[1].id
+resource "google_compute_region_network_endpoint_group" "cloudrun_neg_us" {
+  name                  = "woopick-backend-cloudrun-neg-us"
+  region                = "us-central1"
+  network_endpoint_type = "SERVERLESS"
+  cloud_run {
+    service = "woopick-backend-us"
   }
-
-  # Use an explicit depends_on clause to wait until API is enabled
-  depends_on = [
-    google_project_service.compute_api,
-  ]
 }
